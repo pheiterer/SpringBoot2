@@ -44,6 +44,25 @@ public class SpringClient {
 
         log.info("saved anime {}", noGameSaved);
 
+        Anime animeSave = noGameSaved.getBody();
+        animeSave.setName("No Game No Life 2");
+
+
+        ResponseEntity<Void> noGameUpdate = new RestTemplate().exchange("http://localhost:8080/animes",
+                HttpMethod.PUT,
+                new HttpEntity<>(animeSave,createJsonHeader()),
+                Void.class);
+
+        log.info(noGameUpdate);
+
+
+        ResponseEntity<Void> noGameDelete = new RestTemplate().exchange("http://localhost:8080/animes/{id}",
+                HttpMethod.DELETE,
+                null,
+                Void.class,
+                animeSave.getId());
+
+        log.info(noGameDelete);
     }
 
     private static HttpHeaders createJsonHeader(){
