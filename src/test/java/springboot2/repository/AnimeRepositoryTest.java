@@ -1,5 +1,6 @@
 package springboot2.repository;
 
+import jakarta.validation.ConstraintViolationException;
 import lombok.extern.log4j.Log4j2;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -72,8 +73,7 @@ class AnimeRepositoryTest{
 
         List<Anime> animes = this.animeRepository.findByName(name);
 
-        Assertions.assertThat(animes).isNotEmpty();
-        Assertions.assertThat(animes).contains(savedAnime);
+        Assertions.assertThat(animes).isNotEmpty().contains(savedAnime);
 
     }
 
@@ -83,6 +83,21 @@ class AnimeRepositoryTest{
         List<Anime> animes = this.animeRepository.findByName("ada");
 
         Assertions.assertThat(animes).isEmpty();
+
+    }
+
+    @Test
+    @DisplayName("Save throw ConstraintViolationException when name is empty")
+    void save_ThrowsConstraintViolationException_WhenNameIsEmpty(){
+        Anime anime = new Anime();
+
+//        Assertions.assertThatThrownBy(() -> this.animeRepository.save(anime))
+//                .isInstanceOf(ConstraintViolationException.class);
+
+        Assertions.assertThatExceptionOfType(ConstraintViolationException.class)
+                .isThrownBy(() -> this.animeRepository.save(anime)).withMessageContaining("The anime name cannot be empty");
+
+
 
     }
 
