@@ -2,8 +2,7 @@ package springboot2.client;
 
 import lombok.extern.log4j.Log4j2;
 import org.springframework.core.ParameterizedTypeReference;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
 import org.springframework.web.client.RestTemplate;
 import springboot2.domain.Anime;
 
@@ -28,7 +27,28 @@ public class SpringClient {
                 null,
                 new ParameterizedTypeReference<>() {});
         //@formatter:on
-
         log.info(exchange.getBody());
+
+
+//        Anime kingdom = Anime.builder().name("kingdom").build();
+//        Anime kingdomSaved = new RestTemplate().postForObject("http://localhost:8080/animes", kingdom, Anime.class);
+//
+//        log.info("saved anime {}", kingdomSaved);
+
+        Anime noGame = Anime.builder().name("No Game No Life").build();
+        ResponseEntity<Anime> noGameSaved = new RestTemplate().exchange("http://localhost:8080/animes",
+                HttpMethod.POST,
+                new HttpEntity<>(noGame,createJsonHeader()),
+                Anime.class);
+
+
+        log.info("saved anime {}", noGameSaved);
+
+    }
+
+    private static HttpHeaders createJsonHeader(){
+        HttpHeaders httpHeaders = new HttpHeaders();
+        httpHeaders.setContentType(MediaType.APPLICATION_JSON);
+        return httpHeaders;
     }
 }
