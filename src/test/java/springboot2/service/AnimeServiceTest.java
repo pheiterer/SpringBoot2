@@ -18,7 +18,7 @@ import springboot2.exception.BadRequestException;
 import springboot2.repository.AnimeRepository;
 import springboot2.util.AnimeCreator;
 import springboot2.util.AnimePostRequesBodyCreator;
-import springboot2.util.AnimePutRequesBodyCreator;
+import springboot2.util.AnimePutRequestBodyCreator;
 
 import java.util.Collections;
 import java.util.List;
@@ -144,7 +144,7 @@ class AnimeServiceTest {
     @DisplayName("Replace update Anime Object When Successful")
     void Replace_UpdateAnime_WhenSuccessful() {
 
-        Assertions.assertThatCode(() ->animeService.replace(AnimePutRequesBodyCreator.createAnimePouRequestBody())).doesNotThrowAnyException();
+        Assertions.assertThatCode(() ->animeService.replace(AnimePutRequestBodyCreator.createAnimePutRequestBody())).doesNotThrowAnyException();
     }
 
     @Test

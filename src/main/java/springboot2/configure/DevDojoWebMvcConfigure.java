@@ -13,7 +13,7 @@ public class DevDojoWebMvcConfigure implements WebMvcConfigurer {
     @Override
     public void addArgumentResolvers(List<HandlerMethodArgumentResolver> resolvers) {
         PageableHandlerMethodArgumentResolver pageableHandler = new PageableHandlerMethodArgumentResolver();
-        pageableHandler.setFallbackPageable(PageRequest.of(1,5));
+        pageableHandler.setFallbackPageable(PageRequest.of(0,5));
         resolvers.add(pageableHandler);
     }
 }
