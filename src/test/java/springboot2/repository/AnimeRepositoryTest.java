@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import springboot2.domain.Anime;
+import springboot2.util.AnimeCreator;
 
 import java.util.List;
 import java.util.Optional;
@@ -23,7 +24,7 @@ class AnimeRepositoryTest{
     @Test
     @DisplayName("Save persist Anime when successful")
     void save_PersistAnime_WhenSuccessful(){
-        Anime anime = createAnime();
+        Anime anime = AnimeCreator.createAnimeToBeSaved();
         Anime savedAnime = this.animeRepository.save(anime);
 
         Assertions.assertThat(savedAnime).isNotNull();
@@ -36,7 +37,7 @@ class AnimeRepositoryTest{
     @Test
     @DisplayName("Save updates Anime when successful")
     void save_UpdatesAnime_WhenSuccessful(){
-        Anime anime = createAnime();
+        Anime anime = AnimeCreator.createAnimeToBeSaved();
         Anime savedAnime = this.animeRepository.save(anime);
 
         savedAnime.setName("Viland");
@@ -52,7 +53,7 @@ class AnimeRepositoryTest{
     @Test
     @DisplayName("Delete removes Anime when successful")
     void delete_RemovesAnime_WhenSuccessful(){
-        Anime anime = createAnime();
+        Anime anime = AnimeCreator.createAnimeToBeSaved();
         Anime savedAnime = this.animeRepository.save(anime);
 
         this.animeRepository.delete(savedAnime);
@@ -66,7 +67,7 @@ class AnimeRepositoryTest{
     @Test
     @DisplayName("Find by Name returns list of Anime when successful")
     void findByName_ReturnsListOfAnime_WhenSuccessful(){
-        Anime anime = createAnime();
+        Anime anime = AnimeCreator.createAnimeToBeSaved();
         Anime savedAnime = this.animeRepository.save(anime);
 
         String name = savedAnime.getName();
@@ -102,9 +103,5 @@ class AnimeRepositoryTest{
     }
 
 
-    private Anime createAnime(){
-        return Anime.builder()
-                .name("Hell's Paradise")
-                .build();
-    }
+
 }
