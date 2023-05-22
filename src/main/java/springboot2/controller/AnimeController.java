@@ -12,9 +12,7 @@ import springboot2.domain.Anime;
 import springboot2.requests.AnimePostRequestBody;
 import springboot2.requests.AnimePutRequestBody;
 import springboot2.service.AnimeService;
-import springboot2.util.DateUtil;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
@@ -22,18 +20,15 @@ import java.util.List;
 @Log4j2
 @RequiredArgsConstructor
 public class AnimeController {
-    private final DateUtil dateUtil;
     private final AnimeService animeService;
 
     @GetMapping
     public ResponseEntity<Page<Anime>> list(Pageable pageable) {
-        log.info(dateUtil.formatLocalDateTimeToDatabaseStyle(LocalDateTime.now()));
         return ResponseEntity.ok(animeService.listAll(pageable));
     }
 
     @GetMapping(path = "/all")
     public ResponseEntity<List<Anime>> listAll() {
-        log.info(dateUtil.formatLocalDateTimeToDatabaseStyle(LocalDateTime.now()));
         return ResponseEntity.ok(animeService.listAllNoPageable());
     }
 
@@ -53,7 +48,7 @@ public class AnimeController {
     }
 
     @DeleteMapping(path = "/{id}")
-    public ResponseEntity<Anime> delete(@PathVariable long id) {
+    public ResponseEntity<Void> delete(@PathVariable long id) {
         animeService.delete(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
