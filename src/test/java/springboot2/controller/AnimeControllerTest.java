@@ -20,7 +20,7 @@ import springboot2.requests.AnimePutRequestBody;
 import springboot2.service.AnimeService;
 import springboot2.util.AnimeCreator;
 import springboot2.util.AnimePostRequesBodyCreator;
-import springboot2.util.AnimePutRequesBodyCreator;
+import springboot2.util.AnimePutRequestBodyCreator;
 
 import java.util.Collections;
 import java.util.List;
@@ -125,7 +125,6 @@ class AnimeControllerTest {
     @Test
     @DisplayName("Save Returns Anime Object When Successful")
     void save_ReturnsAnime_WhenSuccessful() {
-        Long id = AnimeCreator.createValidAnime().getId();
 
         Anime anime = animeController.save(AnimePostRequesBodyCreator.createAnimePostRequestBody()).getBody();
 
@@ -136,9 +135,9 @@ class AnimeControllerTest {
     @DisplayName("Replace update Anime Object When Successful")
     void Replace_UpdateAnime_WhenSuccessful() {
 
-        ResponseEntity<Void> entity = animeController.replace(AnimePutRequesBodyCreator.createAnimePouRequestBody());
+        ResponseEntity<Void> entity = animeController.replace(AnimePutRequestBodyCreator.createAnimePutRequestBody());
 
-        Assertions.assertThatCode(() ->animeController.replace(AnimePutRequesBodyCreator.createAnimePouRequestBody()).getBody()).doesNotThrowAnyException();
+        Assertions.assertThatCode(() ->animeController.replace(AnimePutRequestBodyCreator.createAnimePutRequestBody()).getBody()).doesNotThrowAnyException();
         Assertions.assertThat(entity).isNotNull();
         Assertions.assertThat(entity.getStatusCode()).isEqualTo(HttpStatus.NO_CONTENT);
 
