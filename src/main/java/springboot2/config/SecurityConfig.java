@@ -18,7 +18,9 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.authorizeHttpRequests((authz) -> authz
+        http.csrf().disable()
+//                .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
+                .authorizeHttpRequests((authz) -> authz
                 .anyRequest().authenticated()
         ).httpBasic(withDefaults());
         return http.build();
@@ -27,8 +29,8 @@ public class SecurityConfig {
     @Bean
     public InMemoryUserDetailsManager userDetailsService() {
         PasswordEncoder encoder = createDelegatingPasswordEncoder();
-        UserDetails user = User.withUsername("devdojo")
-                .password(encoder.encode("balda"))
+        UserDetails user = User.withUsername("paulo")
+                .password(encoder.encode("12345"))
                 .roles("USER","ADMIN")
                 .build();
         return new InMemoryUserDetailsManager(user);
