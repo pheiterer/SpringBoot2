@@ -17,14 +17,27 @@ import static org.springframework.security.crypto.factory.PasswordEncoderFactori
 @Configuration
 @EnableMethodSecurity
 public class SecurityConfig {
-
+    /**
+     * BasicAuthenticationFilter
+     * UsernamePasswordAuthenticatorFilter
+     * DefaultLoginPageGeneratingFilter
+     * DefaultLogoutPageGeneratingFilter
+     * FilterSecurityInterceptor
+     * Authentication -> Authorization
+     *
+     *
+     * @param http
+     * @throws Exception
+     */
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.csrf().disable()
 //                .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
                 .authorizeHttpRequests((authz) -> authz
-                .anyRequest().authenticated()
-        ).httpBasic(withDefaults());
+                        .anyRequest().authenticated()
+                ).formLogin()
+                .and()
+                .httpBasic(withDefaults());
         return http.build();
     }
 
@@ -33,7 +46,7 @@ public class SecurityConfig {
         PasswordEncoder encoder = createDelegatingPasswordEncoder();
         UserDetails user = User.withUsername("paulo")
                 .password(encoder.encode("12345"))
-                .roles("USER","ADMIN")
+                .roles("USER", "ADMIN")
                 .build();
         return new InMemoryUserDetailsManager(user);
     }
