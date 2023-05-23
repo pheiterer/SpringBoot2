@@ -1,22 +1,23 @@
 package springboot2.config;
 
 
+import lombok.RequiredArgsConstructor;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
+import springboot2.service.DevDojoUserDetailsService;
 
 import static org.springframework.security.config.Customizer.withDefaults;
-import static org.springframework.security.crypto.factory.PasswordEncoderFactories.createDelegatingPasswordEncoder;
 
 @Configuration
 @EnableMethodSecurity
+@RequiredArgsConstructor
+@Log4j2
 public class SecurityConfig {
+    private final DevDojoUserDetailsService devDojoUserDetailsService;
     /**
      * BasicAuthenticationFilter
      * UsernamePasswordAuthenticatorFilter
@@ -24,7 +25,6 @@ public class SecurityConfig {
      * DefaultLogoutPageGeneratingFilter
      * FilterSecurityInterceptor
      * Authentication -> Authorization
-     *
      *
      * @param http
      * @throws Exception
@@ -41,13 +41,14 @@ public class SecurityConfig {
         return http.build();
     }
 
-    @Bean
-    public InMemoryUserDetailsManager userDetailsService() {
-        PasswordEncoder encoder = createDelegatingPasswordEncoder();
-        UserDetails user = User.withUsername("paulo")
-                .password(encoder.encode("12345"))
-                .roles("USER", "ADMIN")
-                .build();
-        return new InMemoryUserDetailsManager(user);
-    }
+//    @Bean
+//    public InMemoryUserDetailsManager userDetailsService() {
+//        PasswordEncoder encoder = createDelegatingPasswordEncoder();
+//        log.info("Password encoded {}", encoder.encode("12345"));
+//        UserDetails user = User.withUsername("clay")
+//                    .password(encoder.encode("12345"))
+//                .roles("USER")
+//                .build();
+//        return new InMemoryUserDetailsManager(user);
+//    }
 }
