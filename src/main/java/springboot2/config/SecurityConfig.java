@@ -34,12 +34,15 @@ public class SecurityConfig {
         http.csrf().disable()
 //                .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
                 .authorizeHttpRequests((authz) -> authz
+                        .requestMatchers("/animes/admin/**").hasRole("ADMIN")
+                        .requestMatchers("/animes/**").hasRole("USER")
                         .anyRequest().authenticated()
                 ).formLogin()
                 .and()
                 .httpBasic(withDefaults());
         return http.build();
     }
+
 
 //    @Bean
 //    public InMemoryUserDetailsManager userDetailsService() {
