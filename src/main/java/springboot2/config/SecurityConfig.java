@@ -37,6 +37,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests()
                 .requestMatchers("/animes/admin/**").hasRole("ADMIN")
                 .requestMatchers("/animes/**").hasRole("USER")
+                .requestMatchers("/actuator/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
