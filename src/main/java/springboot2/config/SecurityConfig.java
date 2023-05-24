@@ -18,6 +18,7 @@ import static org.springframework.security.config.Customizer.withDefaults;
 @Log4j2
 public class SecurityConfig {
     private final DevDojoUserDetailsService devDojoUserDetailsService;
+
     /**
      * BasicAuthenticationFilter
      * UsernamePasswordAuthenticatorFilter
@@ -33,11 +34,12 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.csrf().disable()
 //                .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
-                .authorizeHttpRequests((authz) -> authz
-                        .requestMatchers("/animes/admin/**").hasRole("ADMIN")
-                        .requestMatchers("/animes/**").hasRole("USER")
-                        .anyRequest().authenticated()
-                ).formLogin()
+                .authorizeHttpRequests()
+                .requestMatchers("/animes/admin/**").hasRole("ADMIN")
+                .requestMatchers("/animes/**").hasRole("USER")
+                .anyRequest().authenticated()
+                .and()
+                .formLogin()
                 .and()
                 .httpBasic(withDefaults());
         return http.build();
