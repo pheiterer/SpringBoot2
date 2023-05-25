@@ -29,7 +29,7 @@ public class AnimeController {
     private final AnimeService animeService;
 
     @GetMapping
-    @Operation(summary = "List all animes paginated", description = "The dedault size is 20, use the parameter size to change the default value",
+    @Operation(summary = "List all animes paginated", description = "The default size is 20, use the parameter size to change the default value",
     tags = {"animes"})
     public ResponseEntity<Page<Anime>> list(@ParameterObject Pageable pageable) {
         return ResponseEntity.ok(animeService.listAll(pageable));
