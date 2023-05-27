@@ -14,9 +14,14 @@
 	<name>SprigBoot2</name>
 	<description>Curso de Spring Boot DevDojo</description>
 	<properties>
-		<java.version>20</java.version>
+		<java.version>17</java.version>
 		<org.mapstruct.version>1.4.2.Final</org.mapstruct.version>
 		<maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
+		<jib-maven-plugin.version>3.3.2</jib-maven-plugin.version>
+		<docker.distroless.image>openjdk:20-ea-4-jdk</docker.distroless.image>
+		<docker.repo.url>registry.hub.docker.com/pheiterer</docker.repo.url>
+		<docker.repo.project>springboot2-essentials</docker.repo.project>
+		<docker.image.name>${docker.repo.url}/${docker.repo.project}</docker.image.name>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -124,16 +129,45 @@
 	<build>
 		<plugins>
 			<plugin>
+				<groupId>com.google.cloud.tools</groupId>
+				<artifactId>jib-maven-plugin</artifactId>
+				<version>${jib-maven-plugin.version}</version>
+				<configuration>
+					<from>
+						<image>${docker.distroless.image}</image>
+					</from>
+					<to>
+						<image>${docker.image.name}</image>
+						<tags>
+							<tag>${project.version}</tag>
+						</tags>
+					</to>
+					<container>
+						<mainClass>springboot2.SpringBoot2Application</mainClass>
+					</container>
+				</configuration>
+			</plugin>
+			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<mainClass>springboot2.SpringBoot2Application</mainClass>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>repackage</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>${maven-compiler-plugin.version}</version>
 				<configuration>
-					<source>20</source>
-					<target>20</target>
+					<source>17</source>
+					<target>17</target>
 					<annotationProcessorPaths>
 						<path>
 							<groupId>org.mapstruct</groupId>

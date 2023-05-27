@@ -11,7 +11,7 @@ import org.springframework.boot.actuate.autoconfigure.metrics.MeterRegistryCusto
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
-@SpringBootApplication
+
 @OpenAPIDefinition (info =
 @Info(
         title = "Spring Boot Course",
@@ -21,10 +21,11 @@ import org.springframework.context.annotation.Bean;
         contact = @Contact(url = "https://github.com/RydelMorgan", name = "Paulo Henrique", email = "pheiterer@hotmail.com")
 )
 )
-public class SprigBoot2Application {
+@SpringBootApplication
+public class SpringBoot2Application {
 
     public static void main(String[] args) {
-        SpringApplication.run(SprigBoot2Application.class, args);
+        SpringApplication.run(SpringBoot2Application.class, args);
     }
 
     @Bean
