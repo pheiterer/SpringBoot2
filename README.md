@@ -11,36 +11,39 @@ do DevDojo. <sub>*Repositório original -->* [☕](https://github.com/devdojobr/
 
 ## Lista dos vídeos resumida
 
-1. Spring Boot Essentials01 - O que esperar do curso
-1. Spring Boot Essentials02 - Como Java Funciona
-1. Spring Boot Essentials03 - Fazendo o download da JDK 15
-1. Spring Boot Essentials04 - Configurando variaveis de ambiente
-1. Spring Boot Essentials05 - Executando compilação manualmente
-1. Spring Boot Essentials06 - Download da IDE IntelliJ Community
-1. Spring Boot Essentials07 - Conhecendo a IDE IntelliJ Community
-1. Spring Boot Essentials08 - Organizando o código em pacotes
-1. Spring Boot Essentials09 - Comentários
-1. Spring Boot Essentials10 - Tipos primitivos 
-1. Spring Boot Essentials15 - Operadores 
-1. Spring Boot Essentials20 - Estruturas Condicionais dsada
-1. Spring Boot Essentials32 - Arrays
-1. Spring Boot Essentials36 - Arrays Multidimensionais 
-1. Spring Boot Essentials39 - Orientação Objetos
-1. Spring Boot Essentials95 - Exceções
-1. Spring Boot Essentials106 - Classes Utilitárias
-1. Spring Boot Essentials161 - Coleções
-1. Spring Boot Essentials183 - Generics
-1. Spring Boot Essentials189 - Classes Internas
-1. Spring Boot Essentials193 - Parametrizando comportamentos
-1. Spring Boot Essentials195 - Lambdas
-1. Spring Boot Essentials198 - Method Reference
-1. Spring Boot Essentials201 - Optional
-1. Spring Boot Essentials203 - Streams
-1. Spring Boot Essentials220 - Threads
-1. Spring Boot Essentials229 - Concorrência
-1. Spring Boot Essentials246 - Padrões de Projeto
-1. Spring Boot Essentials252 - JDBC
-1. Spring Boot Essentials280 - Testes unitários com jUnit
-1. Spring Boot Essentials282 - Atualizando JDK
-1. Spring Boot Essentials283 - Record Class
-1. Spring Boot Essentials284 - Pattern Matching for instanceof
+1. Spring Boot Essentials - Introdução ao curso
+1. Spring Boot Essentials 01 - O que é Spring Boot
+1. Spring Boot Essentials 02 - Criando projeto na pedreiragem
+1. Spring Boot Essentials 04 - @Component, @Autowired, @SpringBootApplication
+1. Spring Boot Essentials 05 - Hot Swap com Spring Boot Devtools
+1. Spring Boot Essentials 06 - Gerando projeto com start.spring.io
+1. Spring Boot Essentials 07 - Método GET
+1. Spring Boot Essentials 09 - Método POST
+1. Spring Boot Essentials 10 - Método DELETE
+1. Spring Boot Essentials 11 - Método PUT
+1. Spring Boot Essentials 12 - Instalando Docker e executando container MySQL
+1. Spring Boot Essentials 13 - Spring Data JPA
+1. Spring Boot Essentials 15 - Framework de Mapeamento MapStruct
+1. Spring Boot Essentials 16 - Request Params
+1. Spring Boot Essentials 17 - Exceções Customizadas
+1. Spring Boot Essentials 18 - Handler Global
+1. Spring Boot Essentials 19 - Transações
+1. Spring Boot Essentials 20 - Validação de campos
+1. Spring Boot Essentials 21 - Handler para validação de campos
+1. Spring Boot Essentials 22 - Sobrescrevendo handler do Spring
+1. Spring Boot Essentials 23 - Paginação
+1. Spring Boot Essentials 24 - WebMvcConfigurer
+1. Spring Boot Essentials 25 - Sorting, Log SQL
+1. Spring Boot Essentials 26 - RestTemplate getForObject e getForEntity
+1. Spring Boot Essentials 27 - RestTemplate exchange
+1. Spring Boot Essentials 28 - RestTemplate POST
+1. Spring Boot Essentials 29 - RestTemplate PUT and DELETE
+1. Spring Boot Essentials 30 - Spring Data JPA
+1. Spring Boot Essentials 33 - Unit Tests
+1. Spring Boot Essentials 36 - Testes de Integração
+1. Spring Boot Essentials 38 - Maven Profile Para Testes de Integração
+1. Spring Boot Essentials 39 - Spring Security
+1. Spring Boot Essentials 46 - Documentação com SpringDoc OpenAPI
+1. Spring Boot Essentials 47 - Spring Boot Actuator
+1. Spring Boot Essentials 48 - Monitorando aplicação com prometheus
+1. Spring Boot Essentials 49 - Criado imagem com jib e executando via docker-compose
